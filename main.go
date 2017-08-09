@@ -7,16 +7,23 @@ import (
 	"path/filepath"
 )
 
-var version string
+var version = "source"
 
 func main() {
-	help := flag.Bool("help", false, "")
+	printHelp := flag.Bool("help", false, "")
+	printVersion := flag.Bool("version", false, "")
 	filename := flag.String("file", "vangen.json", "vangen json file")
 	outputDir := flag.String("out", "vangen/", "output dir")
 	flag.Parse()
 
-	if *help {
+	if *printHelp {
 		flag.Usage()
+		return
+	}
+
+	if *printVersion {
+		fmt.Fprintln(os.Stderr, version)
+		return
 	}
 
 	c, err := loadConfig(*filename)
