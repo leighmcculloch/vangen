@@ -3,21 +3,34 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
+	"path"
 )
 
 type config struct {
-	Domain   string
-	Packages []configPackage
+	Domain       string       `json:"domain"`
+	Repositories []repository `json:"repositories"`
 }
 
-type configPackage struct {
-	Name        string `json:"name"`
-	VCS         string `json:"vcs"`
-	Repo        string
-	HomeURL     string
-	DirURL      string
-	FileURL     string
-	Subpackages []string
+type repository struct {
+	Prefix     string     `json:"prefix"`
+	Subs       []string   `json:"subs"`
+	Type       string     `json:"type"`
+	URL        string     `json:"url"`
+	SourceURLs sourceURLs `json:"source"`
+}
+
+func (r repository) Packages() []string {
+	pkgs := []string{r.Prefix}
+	for _, s := range r.Subs {
+		pkgs = append(pkgs, path.Join(r.Prefix, s))
+	}
+	return pkgs
+}
+
+type sourceURLs struct {
+	Home string `json:"home"`
+	Dir  string `json:"dir"`
+	File string `json:"file"`
 }
 
 func loadConfig(filename string) (config, error) {
@@ -33,15 +46,15 @@ func loadConfig(filename string) (config, error) {
 		return config{}, err
 	}
 
-	for i := range c.Packages {
-		if c.Packages[i].HomeURL == "" {
-			c.Packages[i].HomeURL = "_"
+	for i := range c.Repositories {
+		if c.Repositories[i].SourceURLs.Home == "" {
+			c.Repositories[i].SourceURLs.Home = "_"
 		}
-		if c.Packages[i].DirURL == "" {
-			c.Packages[i].DirURL = "_"
+		if c.Repositories[i].SourceURLs.Dir == "" {
+			c.Repositories[i].SourceURLs.Dir = "_"
 		}
-		if c.Packages[i].FileURL == "" {
-			c.Packages[i].FileURL = "_"
+		if c.Repositories[i].SourceURLs.File == "" {
+			c.Repositories[i].SourceURLs.File = "_"
 		}
 	}
 
