@@ -10,7 +10,27 @@ Go vanity URLs work by serving a HTML file that tells the `go get` tool where to
 
 ## Install
 
-`go get 4d63.com/vangen`
+### Source
+
+```
+go get 4d63.com/vangen
+```
+
+### Mac
+
+```
+curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/vangen/binaries/mac/amd64/vangen && chmod +x /usr/local/bin/vangen
+```
+
+### Linux
+
+```
+curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/vangen/binaries/linux/amd64/vangen && chmod +x /usr/local/bin/vangen
+```
+
+### Windows
+
+[Download the executable](https://raw.githubusercontent.com/leighmcculloch/vangen/binaries/windows/amd64/vangen.exe), and save it to your path.
 
 ## Usage
 

@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 )
 
+var version string
+
 func main() {
 	help := flag.Bool("help", false, "")
 	filename := flag.String("file", "vangen.json", "vangen json file")
