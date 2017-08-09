@@ -10,7 +10,7 @@ Go vanity URLs work by serving a HTML file that tells the `go get` tool where to
 
 ## Install
 
-`go get -u 4d63.com/vangen`
+`go get 4d63.com/vangen`
 
 ## Usage
 
