@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path"
+	"strings"
 )
 
 type config struct {
@@ -47,16 +48,31 @@ func loadConfig(filename string) (config, error) {
 	}
 
 	for i := range c.Repositories {
-		if c.Repositories[i].SourceURLs.Home == "" {
-			c.Repositories[i].SourceURLs.Home = "_"
-		}
-		if c.Repositories[i].SourceURLs.Dir == "" {
-			c.Repositories[i].SourceURLs.Dir = "_"
-		}
-		if c.Repositories[i].SourceURLs.File == "" {
-			c.Repositories[i].SourceURLs.File = "_"
-		}
+		c.Repositories[i] = transformRepository(c.Repositories[i])
 	}
 
 	return c, nil
+}
+
+func transformRepository(r repository) repository {
+	if strings.HasPrefix(r.URL, "https://github.com") {
+		r.Type = "git"
+		r.SourceURLs = sourceURLs{
+			Home: r.URL,
+			Dir:  r.URL + "/tree/master{/dir}",
+			File: r.URL + "/blob/master{/dir}/{file}#L{line}",
+		}
+	}
+
+	if r.SourceURLs.Home == "" {
+		r.SourceURLs.Home = "_"
+	}
+	if r.SourceURLs.Dir == "" {
+		r.SourceURLs.Dir = "_"
+	}
+	if r.SourceURLs.File == "" {
+		r.SourceURLs.File = "_"
+	}
+
+	return r
 }

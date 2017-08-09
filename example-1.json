@@ -1,0 +1,12 @@
+{
+  "domain": "4d63.com",
+  "repositories": [
+    {
+      "prefix": "optional",
+      "subs": [
+        "template"
+      ],
+      "url": "https://github.com/leighmcculloch/go-optional"
+    },
+  ]
+}

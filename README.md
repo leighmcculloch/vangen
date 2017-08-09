@@ -14,7 +14,9 @@ Go vanity URLs work by serving a HTML file that tells the `go get` tool where to
 
 ## Usage
 
-1. Create a `vangen.json`. [example.json](example.json)
+1. Create a `vangen.json`.
+   * [example-1.json](example-1.json) - Minimum required fields.
+   * [example-2.json](example-2.json) - All fields.
 2. Run `vangen`.
 3. Host the files outputted in `vangen/` at your domain.
 4. Try it out with `go get [domain]/[package]`
