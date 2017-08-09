@@ -5,8 +5,8 @@ Static HTML generator for hosting Go repositories at a vanity URL.
 Go vanity URLs work by serving a HTML file that tells the `go get` tool where to download the source from. You can still host the source code at Github, BitBucket, but the vanity URL gives you portability and other benefits.
 
 ## Why
-* Simple maintenance of Go vanity URLs by turning a definition file `vangen.json` into the files you need to host. No need to manually craft HTML files.
-* Simple hosting options since the files are all static. No need for Google AppEngine, Heroku, etc. Host the files on Github Pages, AWS S3, Google Cloud Storage, etc.
+* Maintain Go vanity URLs with a simple definition file `vangen.json`.
+* Host Go vanity URLs using static hosting. No need for Google AppEngine, Heroku, etc. Host the files on Github Pages, AWS S3, Google Cloud Storage, etc.
 
 ## Install
 
