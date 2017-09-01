@@ -18,6 +18,11 @@ type repository struct {
 	Type       string     `json:"type"`
 	URL        string     `json:"url"`
 	SourceURLs sourceURLs `json:"source"`
+	Website    website    `json:"website"`
+}
+
+type website struct {
+	URL string `json:"url"`
 }
 
 func (r repository) Packages() []string {

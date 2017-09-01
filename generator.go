@@ -13,10 +13,10 @@ func generate(w io.Writer, domain, pkg string, r repository) error {
 <meta charset="utf-8">
 <meta name="go-import" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.Type}} {{.Repository.URL}}">
 <meta name="go-source" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.SourceURLs.Home}} {{.Repository.SourceURLs.Dir}} {{.Repository.SourceURLs.File}}">
-<meta http-equiv="refresh" content="0; url=https://godoc.org/{{.Domain}}/{{.Package}}">
+<meta http-equiv="refresh" content="0; url={{.HomeURL}}">
 </head>
 <body>
-If you are not redirected, <a href="https://godoc.org/{{.Domain}}/{{.Package}}">click here</a>.
+If you are not redirected, <a href="{{.HomeURL}}">click here</a>.
 </body>`
 
 	tmpl, err := template.New("").Parse(html)
@@ -24,14 +24,23 @@ If you are not redirected, <a href="https://godoc.org/{{.Domain}}/{{.Package}}">
 		return fmt.Errorf("error loading template: %v", err)
 	}
 
+	var homeURL string
+	if r.Website.URL != "" {
+		homeURL = r.Website.URL
+	} else {
+		homeURL = fmt.Sprintf("https://godoc.org/%s/%s", domain, pkg)
+	}
+
 	data := struct {
 		Domain     string
 		Package    string
 		Repository repository
+		HomeURL    string
 	}{
 		Domain:     domain,
 		Package:    pkg,
 		Repository: r,
+		HomeURL:    homeURL,
 	}
 
 	err = tmpl.ExecuteTemplate(w, "", data)

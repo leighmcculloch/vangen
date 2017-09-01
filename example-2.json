@@ -12,6 +12,9 @@
         "home": "https://github.com/leighmcculloch/go-optional",
         "dir": "https://github.com/leighmcculloch/go-optional/tree/master{/dir}",
         "file": "https://github.com/leighmcculloch/go-optional/blob/master{/dir}/{file}#L{line}"
+      },
+      "website": {
+        "url": "https://github.com/leighmcculoch/go-optional"
       }
     }
   ]
