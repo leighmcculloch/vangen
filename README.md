@@ -40,3 +40,49 @@ curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/v
 2. Run `vangen`.
 3. Host the files outputted in `vangen/` at your domain.
 4. Try it out with `go get [domain]/[package]`
+
+## Examples
+
+### Minimal
+
+```json
+{
+  "domain": "4d63.com",
+  "repositories": [
+    {
+      "prefix": "optional",
+      "subs": [
+        "template"
+      ],
+      "url": "https://github.com/leighmcculloch/go-optional"
+    },
+  ]
+}
+```
+
+### All fields
+
+```json
+{
+  "domain": "4d63.com",
+  "repositories": [
+    {
+      "prefix": "optional",
+      "subs": [
+        "template"
+      ],
+      "type": "git",
+      "url": "https://github.com/leighmcculloch/go-optional",
+      "source": {
+        "home": "https://github.com/leighmcculloch/go-optional",
+        "dir": "https://github.com/leighmcculloch/go-optional/tree/master{/dir}",
+        "file": "https://github.com/leighmcculloch/go-optional/blob/master{/dir}/{file}#L{line}"
+      },
+      "website": {
+        "url": "https://github.com/leighmcculoch/go-optional"
+      }
+    }
+  ]
+}
+```
+
