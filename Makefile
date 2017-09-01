@@ -16,6 +16,3 @@ release:
 	git subtree split --prefix binaries -b binaries
 	git push --force origin binaries:binaries
 	git checkout -
-
-setup:
-	go get -u github.com/golang/dep/cmd/dep
