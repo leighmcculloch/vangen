@@ -1,5 +1,12 @@
+.PHONY: test build release
+
+test: build
+	go test -cover
+	go vet
+	$$GOPATH/bin/vangen -config=example/vangen.json -out=example/vangen
+
 build:
-	go install
+	go install -ldflags "-X main.version=`date +"%Y%m%d"`+`git rev-parse --short HEAD`"
 
 release:
 	mkdir -p binaries/linux/amd64

@@ -1,0 +1,35 @@
+{
+  "domain": "example.com",
+  "repositories": [
+    {
+      "prefix": "pkg1",
+      "url": "https://github.com/leighmcculloch/go-pkg1"
+    },
+    {
+      "prefix": "pkg2",
+      "subs": [
+        "subpkg1/subsubpkg1",
+        "subpkg2/subsubpkg1",
+        "subpkg2/subsubpkg2",
+        "subpkg2/subsubpkg3"
+      ],
+      "url": "https://github.com/leighmcculloch/go-pkg2"
+    },
+    {
+      "prefix": "pkg3",
+      "subs": [
+        "subpkg1"
+      ],
+      "type": "git",
+      "url": "https://example.com/repositories/go-pkg3",
+      "source": {
+        "home": "https://example.com/repositories/go-pkg3",
+        "dir": "https://example.com/repositories/go-pkg3/browse{/dir}",
+        "file": "https://example.com/repositories/go-pkg3/show{/dir}/{file}#L{line}"
+      },
+      "website": {
+        "url": "https://example.com/readme/go-pkg3"
+      }
+    }
+  ]
+}

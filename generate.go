@@ -18,7 +18,8 @@ func generate(w io.Writer, domain, pkg string, r repository) error {
 </head>
 <body>
 If you are not redirected, <a href="{{.HomeURL}}">click here</a>.
-</body>`
+</body>
+</html>`
 
 	tmpl, err := template.New("").Parse(html)
 	if err != nil {
