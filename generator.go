@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"strings"
 )
 
 func generate(w io.Writer, domain, pkg string, r repository) error {
@@ -29,6 +30,25 @@ If you are not redirected, <a href="{{.HomeURL}}">click here</a>.
 		homeURL = r.Website.URL
 	} else {
 		homeURL = fmt.Sprintf("https://godoc.org/%s/%s", domain, pkg)
+	}
+
+	if strings.HasPrefix(r.URL, "https://github.com") {
+		r.Type = "git"
+		r.SourceURLs = sourceURLs{
+			Home: r.URL,
+			Dir:  r.URL + "/tree/master{/dir}",
+			File: r.URL + "/blob/master{/dir}/{file}#L{line}",
+		}
+	}
+
+	if r.SourceURLs.Home == "" {
+		r.SourceURLs.Home = "_"
+	}
+	if r.SourceURLs.Dir == "" {
+		r.SourceURLs.Dir = "_"
+	}
+	if r.SourceURLs.File == "" {
+		r.SourceURLs.File = "_"
 	}
 
 	data := struct {
