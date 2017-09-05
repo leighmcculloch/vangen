@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"io"
 	"io/ioutil"
 	"path"
 )
@@ -38,8 +39,8 @@ type website struct {
 	URL string `json:"url"`
 }
 
-func parseConfig(filename string) (config, error) {
-	bytes, err := ioutil.ReadFile(filename)
+func parseConfig(r io.Reader) (config, error) {
+	bytes, err := ioutil.ReadAll(r)
 
 	if err != nil {
 		return config{}, err

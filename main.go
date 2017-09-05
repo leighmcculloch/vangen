@@ -26,7 +26,13 @@ func main() {
 		return
 	}
 
-	c, err := parseConfig(*filename)
+	cf, err := os.Open(*filename)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+		return
+	}
+
+	c, err := parseConfig(cf)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		return
