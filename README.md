@@ -34,11 +34,9 @@ curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/v
 
 ## Usage
 
-1. Create a `vangen.json`.
-   * [example-1.json](example-1.json) - Minimum required fields.
-   * [example-2.json](example-2.json) - All fields.
-2. Run `vangen`.
-3. Host the files outputted in `vangen/` at your domain.
+1. Create a `vangen.json` (see examples below)
+2. Run `vangen`
+3. Host the files outputted in `vangen/` at your domain
 4. Try it out with `go get [domain]/[package]`
 
 ## Examples
