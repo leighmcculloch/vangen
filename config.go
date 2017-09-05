@@ -38,7 +38,7 @@ type website struct {
 	URL string `json:"url"`
 }
 
-func loadConfig(filename string) (config, error) {
+func parseConfig(filename string) (config, error) {
 	bytes, err := ioutil.ReadFile(filename)
 
 	if err != nil {

@@ -26,7 +26,7 @@ func main() {
 		return
 	}
 
-	c, err := loadConfig(*filename)
+	c, err := parseConfig(*filename)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		return
