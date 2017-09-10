@@ -1,6 +1,6 @@
 # vangen
 
-Static HTML generator for hosting Go repositories at a vanity import path.
+Vangen is a tool for generating static HTML for Go vanity import paths.
 
 Go vanity import paths work by serving a HTML file that tells the `go get` tool where to download the source from. You can still host the source code at Github, BitBucket, but the vanity URL gives you portability and other benefits.
 
@@ -39,6 +39,26 @@ curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/v
 3. Host the files outputted in `vangen/` at your domain
 4. Try it out with `go get [domain]/[package]`
 
+```
+$ vangen -help
+Vangen is a tool for generating static HTML for Go vanity import paths.
+
+Usage:
+
+  vangen [-file=vangen.json] [-out=vangen/]
+
+Flags:
+
+  -file filename
+        vangen json configuration filename (default "vangen.json")
+  -help
+        print this help list
+  -out directory
+        output directory that static files will be written to (default "vangen/")
+  -version
+        print program version
+```
+
 ## Examples
 
 ### Minimal
@@ -53,7 +73,7 @@ curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/v
         "template"
       ],
       "url": "https://github.com/leighmcculloch/go-optional"
-    },
+    }
   ]
 }
 ```

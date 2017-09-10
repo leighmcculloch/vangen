@@ -10,10 +10,17 @@ import (
 var version = "source"
 
 func main() {
-	printHelp := flag.Bool("help", false, "")
-	printVersion := flag.Bool("version", false, "")
-	filename := flag.String("file", "vangen.json", "vangen json file")
-	outputDir := flag.String("out", "vangen/", "output dir")
+	printHelp := flag.Bool("help", false, "print this help list")
+	printVersion := flag.Bool("version", false, "print program version")
+	filename := flag.String("file", "vangen.json", "vangen json configuration `filename`")
+	outputDir := flag.String("out", "vangen/", "output `directory` that static files will be written to")
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Vangen is a tool for generating static HTML for hosting Go repositories at a vanity import path.\n\n")
+		fmt.Fprintf(os.Stderr, "Usage:\n\n")
+		fmt.Fprintf(os.Stderr, "  vangen [-file=vangen.json] [-out=vangen/]\n\n")
+		fmt.Fprintf(os.Stderr, "Flags:\n\n")
+		flag.PrintDefaults()
+	}
 	flag.Parse()
 
 	if *printHelp {
