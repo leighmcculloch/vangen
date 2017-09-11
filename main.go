@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 )
 
-var version = "source"
+var version = "<not set>"
 
 func main() {
 	printHelp := flag.Bool("help", false, "print this help list")
