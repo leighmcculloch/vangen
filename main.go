@@ -13,12 +13,12 @@ func main() {
 	printHelp := flag.Bool("help", false, "print this help list")
 	printVersion := flag.Bool("version", false, "print program version")
 	verbose := flag.Bool("verbose", false, "print verbose output when run")
-	filename := flag.String("file", "vangen.json", "vangen json configuration `filename`")
+	filename := flag.String("config", "vangen.json", "vangen json configuration `filename`")
 	outputDir := flag.String("out", "vangen/", "output `directory` that static files will be written to")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Vangen is a tool for generating static HTML for hosting Go repositories at a vanity import path.\n\n")
 		fmt.Fprintf(os.Stderr, "Usage:\n\n")
-		fmt.Fprintf(os.Stderr, "  vangen [-file=vangen.json] [-out=vangen/]\n\n")
+		fmt.Fprintf(os.Stderr, "  vangen [-config=vangen.json] [-out=vangen/]\n\n")
 		fmt.Fprintf(os.Stderr, "Flags:\n\n")
 		flag.PrintDefaults()
 	}
