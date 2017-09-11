@@ -12,6 +12,7 @@ var version = "source"
 func main() {
 	printHelp := flag.Bool("help", false, "print this help list")
 	printVersion := flag.Bool("version", false, "print program version")
+	verbose := flag.Bool("verbose", false, "print verbose output when run")
 	filename := flag.String("file", "vangen.json", "vangen json configuration `filename`")
 	outputDir := flag.String("out", "vangen/", "output `directory` that static files will be written to")
 	flag.Usage = func() {
@@ -67,6 +68,9 @@ func main() {
 				}
 			}()
 
+			if *verbose {
+				fmt.Fprintf(os.Stderr, "Writing %s\n", pathOut)
+			}
 			err = generate(f, c.Domain, p, r)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "generating package %s: %v", p, err)
