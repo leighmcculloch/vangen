@@ -57,7 +57,7 @@ func TestParseConfigGitubMinimal(t *testing.T) {
 	e := config{
 		Domain: "4d63.com",
 		Repositories: []repository{
-			repository{
+			{
 				Prefix: "optional",
 				Subs: []string{
 					"template",
@@ -103,7 +103,7 @@ func TestParseConfigGithubComplete(t *testing.T) {
 	e := config{
 		Domain: "4d63.com",
 		Repositories: []repository{
-			repository{
+			{
 				Prefix: "optional",
 				Subs: []string{
 					"template",
