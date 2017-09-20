@@ -1,4 +1,9 @@
 # vangen
+[![Linux/OSX Build Status](https://img.shields.io/travis/leighmcculloch/vangen.svg?label=linux%20%26%20osx)](https://travis-ci.org/leighmcculloch/vangen)
+[![Windows Build Status](https://img.shields.io/appveyor/ci/leighmcculloch/vangen.svg?label=windows)](https://ci.appveyor.com/project/leighmcculloch/vangen)
+[![Codecov](https://img.shields.io/codecov/c/github/leighmcculloch/vangen.svg)](https://codecov.io/gh/leighmcculloch/vangen)
+[![Go Report Card](https://goreportcard.com/badge/github.com/leighmcculloch/vangen)](https://goreportcard.com/report/github.com/leighmcculloch/vangen)
+[![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/leighmcculloch/vangen)
 
 Vangen is a tool for generating static HTML for Go vanity import paths.
 
