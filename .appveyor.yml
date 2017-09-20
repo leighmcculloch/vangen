@@ -1,0 +1,8 @@
+version: '{build}'
+clone_folder: c:\gopath\src\4d63.com\vangen
+environment:
+  GOVERSION: 1.9
+  GOPATH: c:\gopath
+build: off
+test_script:
+  - cmd: go test -cover ./...
