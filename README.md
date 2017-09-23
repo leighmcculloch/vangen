@@ -46,20 +46,22 @@ curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/v
 
 ```
 $ vangen -help
-Vangen is a tool for generating static HTML for Go vanity import paths.
+Vangen is a tool for generating static HTML for hosting Go repositories at a vanity import path.
 
 Usage:
 
-  vangen [-file=vangen.json] [-out=vangen/]
+  vangen [-config=vangen.json] [-out=vangen/]
 
 Flags:
 
-  -file filename
+  -config filename
         vangen json configuration filename (default "vangen.json")
   -help
         print this help list
   -out directory
         output directory that static files will be written to (default "vangen/")
+  -verbose
+        print verbose output when run
   -version
         print program version
 ```
