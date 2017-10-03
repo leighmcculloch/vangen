@@ -146,7 +146,7 @@ If you are not redirected, <a href="https://godoc.org/example.com/pkg1/subpkg1">
 
 	for _, tc := range testCases {
 		var out bytes.Buffer
-		err := generate(&out, tc.domain, tc.pkg, tc.r)
+		err := generate_package(&out, tc.domain, tc.pkg, tc.r)
 		if err != tc.expectedErr {
 			t.Errorf("Test case %#v got err %#v, want %#v", tc, err, tc.expectedErr)
 		} else if out.String() != tc.expectedOut {

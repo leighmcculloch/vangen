@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func generate(w io.Writer, domain, pkg string, r repository) error {
+func generate_package(w io.Writer, domain, pkg string, r repository) error {
 	const html = `<!DOCTYPE html>
 <html>
 <head>

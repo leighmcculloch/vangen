@@ -71,7 +71,7 @@ func main() {
 			if *verbose {
 				fmt.Fprintf(os.Stderr, "Writing %s\n", pathOut)
 			}
-			err = generate(f, c.Domain, p, r)
+			err = generate_package(f, c.Domain, p, r)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "generating package %s: %v", p, err)
 				return
