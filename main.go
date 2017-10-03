@@ -46,6 +46,42 @@ func main() {
 		return
 	}
 
+	err = os.MkdirAll(*outputDir, os.ModePerm)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "making dir %s: %v", *outputDir, err)
+		return
+	}
+
+	if c.Index {
+		pathOut := filepath.Join(*outputDir, "index.html")
+		f, err := os.Create(pathOut)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "writing file %s: %v", pathOut, err)
+			return
+		}
+		defer func() {
+			err := f.Close()
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "closing file %s: %v", pathOut, err)
+			}
+		}()
+
+		if *verbose {
+			fmt.Fprintf(os.Stderr, "Writing %s\n", pathOut)
+		}
+		err = generate_index(f, c.Domain, c.Repositories)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "generating index: %v", err)
+			return
+		}
+
+		err = f.Sync()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "flushing file %s: %v", pathOut, err)
+			return
+		}
+	}
+
 	for _, r := range c.Repositories {
 		for _, p := range r.Packages() {
 			dirOut := filepath.Join(*outputDir, p)

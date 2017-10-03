@@ -1,5 +1,6 @@
 {
   "domain": "example.com",
+  "index": true,
   "repositories": [
     {
       "prefix": "pkg1",

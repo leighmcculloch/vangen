@@ -6,6 +6,34 @@ import (
 	"testing"
 )
 
+func TestParseConfigNoIndex(t *testing.T) {
+	r := strings.NewReader(`{}`)
+
+	c, err := parseConfig(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if g, w := c.Index, false; g != w {
+		t.Errorf("Got index %#v, want %#v", g, w)
+	}
+}
+
+func TestParseConfigIndex(t *testing.T) {
+	r := strings.NewReader(`{
+  "index": true
+}`)
+
+	c, err := parseConfig(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if g, w := c.Index, true; g != w {
+		t.Errorf("Got index %#v, want %#v", g, w)
+	}
+}
+
 func TestParseConfigPackages(t *testing.T) {
 	r := strings.NewReader(`{
   "repositories": [
