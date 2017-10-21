@@ -14,10 +14,28 @@ func generate_package(w io.Writer, domain, pkg string, r repository) error {
 <meta charset="utf-8">
 <meta name="go-import" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.Type}} {{.Repository.URL}}">
 <meta name="go-source" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.SourceURLs.Home}} {{.Repository.SourceURLs.Dir}} {{.Repository.SourceURLs.File}}">
-<meta http-equiv="refresh" content="0; url={{.HomeURL}}">
+<style>
+* { font-family: sans-serif; }
+body { margin-top: 0; }
+.content { display: inline-block; }
+code { display: block; font-family: monospace; font-size: 1em; background-color: #d5d5d5; padding: 1em; margin-bottom: 16px; }
+ul { margin-top: 16px; margin-bottom: 16px; }
+</style>
 </head>
 <body>
-If you are not redirected, <a href="{{.HomeURL}}">click here</a>.
+<div class="content">
+<h2>Go package: {{.Domain}}/{{.Package}}</h2>
+<code>go get {{.Domain}}/{{.Package}}</code>
+<code>import "{{.Domain}}/{{.Package}}"</code>
+Links:
+<ul>
+<li>Home: <a href="{{.HomeURL}}">{{.HomeURL}}</a></code>
+<li>Source: <a href="{{.Repository.URL}}">{{.Repository.URL}}</a></code>
+</ul>
+{{if .Repository.Subs -}}Sub-packages:<ul>{{end -}}
+{{range $_, $s := .Repository.Subs -}}<li><a href="/{{$.Repository.Prefix}}/{{$s}}">{{$.Domain}}/{{$.Repository.Prefix}}/{{$s}}</a></li>{{end -}}
+{{if .Repository.Subs -}}</ul>{{end -}}
+</div>
 </body>
 </html>`
 

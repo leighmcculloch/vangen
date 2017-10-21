@@ -23,3 +23,6 @@ release:
 	git subtree split --prefix binaries -b binaries
 	git push --force origin binaries:binaries
 	git checkout -
+
+deps:
+	go get github.com/sergi/go-diff/diffmatchpatch
