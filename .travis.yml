@@ -10,6 +10,9 @@ os:
   - linux
   - osx
 
+install:
+  - go get -t ./...
+
 script:
   - go test -coverprofile=coverage.txt ./...
   - go vet ./...
