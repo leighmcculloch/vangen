@@ -5,6 +5,7 @@ import (
 	"io"
 	"io/ioutil"
 	"path"
+	"sort"
 )
 
 type config struct {
@@ -52,6 +53,10 @@ func parseConfig(r io.Reader) (config, error) {
 	if err != nil {
 		return config{}, err
 	}
+
+	sort.Slice(c.Repositories, func(i, j int) bool {
+		return c.Repositories[i].Prefix < c.Repositories[j].Prefix
+	})
 
 	return c, nil
 }
