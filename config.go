@@ -19,6 +19,7 @@ type repository struct {
 	Subs       []string   `json:"subs"`
 	Type       string     `json:"type"`
 	URL        string     `json:"url"`
+	Main       bool       `json:"main"`
 	SourceURLs sourceURLs `json:"source"`
 	Website    website    `json:"website"`
 }

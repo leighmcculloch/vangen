@@ -4,7 +4,7 @@
   "repositories": [
     {
       "prefix": "pkg1",
-      "url": "https://github.com/leighmcculloch/go-pkg1"
+      "url": "https://github.com/leighmcculloch/go-pkg1",
     },
     {
       "prefix": "pkg2",
@@ -14,7 +14,8 @@
         "subpkg2/subsubpkg2",
         "subpkg2/subsubpkg3"
       ],
-      "url": "https://github.com/leighmcculloch/go-pkg2"
+      "url": "https://github.com/leighmcculloch/go-pkg2",
+      "main": true
     },
     {
       "prefix": "pkg3",
