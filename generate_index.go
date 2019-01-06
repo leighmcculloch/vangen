@@ -20,29 +20,29 @@ body { margin-top: 0; }
 <body>
 <div class="content">
 
-<h2>Go packages with vanity import path at {{$.Domain}}</h2>
+<h2>{{$.Domain}} Go Modules</h2>
 
-<hr/>
+<h3>Tools:</h3>
 
 <ul>
 {{range $_, $r := .MainRepositories -}}
 <li>
-<a href="/{{$r.Prefix}}">{{$.Domain}}/{{$r.Prefix}}</a>
+<a href="/{{$r.Prefix}}">{{$r.Prefix}}</a>
 {{if .Subs -}}<ul>{{end -}}
-{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s}}">{{$.Domain}}/{{$r.Prefix}}/{{$s}}</a></li>{{end -}}
+{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s}}">{{$s}}</a></li>{{end -}}
 {{if .Subs -}}</ul>{{end -}}
 </li>
 {{end -}}
 </ul>
 
-<hr/>
+<h3>Libraries:</h3>
 
 <ul>
 {{range $_, $r := .PackageRepositories -}}
 <li>
-<a href="/{{$r.Prefix}}">{{$.Domain}}/{{$r.Prefix}}</a>
+<a href="/{{$r.Prefix}}">{{$r.Prefix}}</a>
 {{if .Subs -}}<ul>{{end -}}
-{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s}}">{{$.Domain}}/{{$r.Prefix}}/{{$s}}</a></li>{{end -}}
+{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s}}">{{$s}}</a></li>{{end -}}
 {{if .Subs -}}</ul>{{end -}}
 </li>
 {{end -}}

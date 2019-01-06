@@ -24,14 +24,11 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 </head>
 <body>
 <div class="content">
-<h2>Go package: {{.Domain}}/{{.Package}}</h2>
+<h2>{{.Domain}}/{{.Package}}</h2>
 <code>go get {{.Domain}}/{{.Package}}</code>
 <code>import "{{.Domain}}/{{.Package}}"</code>
-Links:
-<ul>
-<li>Home: <a href="{{.HomeURL}}">{{.HomeURL}}</a></code>
-<li>Source: <a href="{{.Repository.URL}}">{{.Repository.URL}}</a></code>
-</ul>
+Home: <a href="{{.HomeURL}}">{{.HomeURL}}</a><br/>
+Source: <a href="{{.Repository.URL}}">{{.Repository.URL}}</a><br/>
 {{if .Repository.Subs -}}Sub-packages:<ul>{{end -}}
 {{range $_, $s := .Repository.Subs -}}<li><a href="/{{$.Repository.Prefix}}/{{$s}}">{{$.Domain}}/{{$.Repository.Prefix}}/{{$s}}</a></li>{{end -}}
 {{if .Repository.Subs -}}</ul>{{end -}}

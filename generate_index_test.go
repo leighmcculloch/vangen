@@ -42,22 +42,22 @@ body { margin-top: 0; }
 <body>
 <div class="content">
 
-<h2>Go packages with vanity import path at example.com</h2>
+<h2>example.com Go Modules</h2>
 
-<hr/>
+<h3>Tools:</h3>
 
 <ul>
 <li>
-<a href="/pkg1">example.com/pkg1</a>
-<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></li>
+<a href="/pkg1">pkg1</a>
+<ul><li><a href="/pkg1/subpkg1">subpkg1</a></li><li><a href="/pkg1/subpkg2">subpkg2</a></li></ul></li>
 </ul>
 
-<hr/>
+<h3>Libraries:</h3>
 
 <ul>
 <li>
-<a href="/pkg2">example.com/pkg2</a>
-<ul><li><a href="/pkg2/subpkg1">example.com/pkg2/subpkg1</a></li><li><a href="/pkg2/subpkg2/subsubpkg1">example.com/pkg2/subpkg2/subsubpkg1</a></li></ul></li>
+<a href="/pkg2">pkg2</a>
+<ul><li><a href="/pkg2/subpkg1">subpkg1</a></li><li><a href="/pkg2/subpkg2/subsubpkg1">subpkg2/subsubpkg1</a></li></ul></li>
 </ul>
 
 <hr/>

@@ -42,14 +42,11 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 </head>
 <body>
 <div class="content">
-<h2>Go package: example.com/pkg1</h2>
+<h2>example.com/pkg1</h2>
 <code>go get example.com/pkg1</code>
 <code>import "example.com/pkg1"</code>
-Links:
-<ul>
-<li>Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a></code>
-<li>Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a></code>
-</ul>
+Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a><br/>
+Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
 </html>`,
@@ -89,14 +86,11 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 </head>
 <body>
 <div class="content">
-<h2>Go package: example.com/pkg1</h2>
+<h2>example.com/pkg1</h2>
 <code>go get example.com/pkg1</code>
 <code>import "example.com/pkg1"</code>
-Links:
-<ul>
-<li>Home: <a href="https://www.example.com">https://www.example.com</a></code>
-<li>Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a></code>
-</ul>
+Home: <a href="https://www.example.com">https://www.example.com</a><br/>
+Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
 </html>`,
@@ -136,14 +130,11 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 </head>
 <body>
 <div class="content">
-<h2>Go package: example.com/pkg1/subpkg1</h2>
+<h2>example.com/pkg1/subpkg1</h2>
 <code>go get example.com/pkg1/subpkg1</code>
 <code>import "example.com/pkg1/subpkg1"</code>
-Links:
-<ul>
-<li>Home: <a href="https://www.example.com">https://www.example.com</a></code>
-<li>Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a></code>
-</ul>
+Home: <a href="https://www.example.com">https://www.example.com</a><br/>
+Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
 </html>`,
@@ -174,14 +165,11 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 </head>
 <body>
 <div class="content">
-<h2>Go package: example.com/pkg1</h2>
+<h2>example.com/pkg1</h2>
 <code>go get example.com/pkg1</code>
 <code>import "example.com/pkg1"</code>
-Links:
-<ul>
-<li>Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a></code>
-<li>Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a></code>
-</ul>
+Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a><br/>
+Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
 </html>`,
@@ -212,14 +200,11 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 </head>
 <body>
 <div class="content">
-<h2>Go package: example.com/pkg1/subpkg1</h2>
+<h2>example.com/pkg1/subpkg1</h2>
 <code>go get example.com/pkg1/subpkg1</code>
 <code>import "example.com/pkg1/subpkg1"</code>
-Links:
-<ul>
-<li>Home: <a href="https://godoc.org/example.com/pkg1/subpkg1">https://godoc.org/example.com/pkg1/subpkg1</a></code>
-<li>Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a></code>
-</ul>
+Home: <a href="https://godoc.org/example.com/pkg1/subpkg1">https://godoc.org/example.com/pkg1/subpkg1</a><br/>
+Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
 </html>`,
