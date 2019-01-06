@@ -2,16 +2,14 @@ language: go
 
 go_import_path: 4d63.com/vangen
 
-go:
-  - 1.9
-  - tip
+go: 1.x
 
 os:
   - linux
   - osx
 
-install:
-  - go get -t ./...
+env:
+  - GO111MODULE=on
 
 script:
   - go test -coverprofile=coverage.txt ./...
