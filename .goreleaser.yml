@@ -1,0 +1,12 @@
+builds:
+  - binary: vangen
+    goos:
+      - linux
+    goarch:
+      - amd64
+
+archive:
+  wrap_in_directory: true
+  format: tar.gz
+  files:
+    - LICENSE
