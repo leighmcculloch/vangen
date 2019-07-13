@@ -141,6 +141,50 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 			expectedErr: nil,
 		},
 		{
+			description: "sub-package hidden",
+			domain:      "example.com",
+			pkg:         "pkg1/subpkg1",
+			r: repository{
+				Prefix: "pkg1",
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}, {Name: "subpkg3", Hidden: true}},
+				Type:   "git",
+				URL:    "https://repositoryhost.com/example/go-pkg1",
+				SourceURLs: sourceURLs{
+					Home: "https://repositoryhost.com/example/go-pkg1/home",
+					Dir:  "https://repositoryhost.com/example/go-pkg1/browser{/dir}",
+					File: "https://repositoryhost.com/example/go-pkg1/view{/dir}{/file}",
+				},
+				Website: website{
+					URL: "https://www.example.com",
+				},
+			},
+			expectedOut: `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="go-import" content="example.com/pkg1 git https://repositoryhost.com/example/go-pkg1">
+<meta name="go-source" content="example.com/pkg1 https://repositoryhost.com/example/go-pkg1/home https://repositoryhost.com/example/go-pkg1/browser{/dir} https://repositoryhost.com/example/go-pkg1/view{/dir}{/file}">
+<style>
+* { font-family: sans-serif; }
+body { margin-top: 0; }
+.content { display: inline-block; }
+code { display: block; font-family: monospace; font-size: 1em; background-color: #d5d5d5; padding: 1em; margin-bottom: 16px; }
+ul { margin-top: 16px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="content">
+<h2>example.com/pkg1/subpkg1</h2>
+<code>go get example.com/pkg1/subpkg1</code>
+<code>import "example.com/pkg1/subpkg1"</code>
+Home: <a href="https://www.example.com">https://www.example.com</a><br/>
+Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a><br/>
+Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
+</body>
+</html>`,
+			expectedErr: nil,
+		},
+		{
 			description: "github defaults",
 			domain:      "example.com",
 			pkg:         "pkg1",
