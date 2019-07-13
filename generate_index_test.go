@@ -21,12 +21,12 @@ func TestGenerateIndex(t *testing.T) {
 			r: []repository{
 				{
 					Prefix: "pkg1",
-					Subs:   []string{"subpkg1", "subpkg2"},
+					Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
 					Main:   true,
 				},
 				{
 					Prefix: "pkg2",
-					Subs:   []string{"subpkg1", "subpkg2/subsubpkg1"},
+					Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2/subsubpkg1"}},
 				},
 			},
 			expectedOut: `<!DOCTYPE html>

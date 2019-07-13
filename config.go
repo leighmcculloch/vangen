@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"io"
 	"io/ioutil"
 	"path"
@@ -16,7 +17,7 @@ type config struct {
 
 type repository struct {
 	Prefix     string     `json:"prefix"`
-	Subs       []string   `json:"subs"`
+	Subs       []sub      `json:"subs"`
 	Type       string     `json:"type"`
 	URL        string     `json:"url"`
 	Main       bool       `json:"main"`
@@ -27,9 +28,46 @@ type repository struct {
 func (r repository) Packages() []string {
 	pkgs := []string{r.Prefix}
 	for _, s := range r.Subs {
-		pkgs = append(pkgs, path.Join(r.Prefix, s))
+		pkgs = append(pkgs, path.Join(r.Prefix, s.Name))
 	}
 	return pkgs
+}
+
+type sub struct {
+	Name   string `json:"name"`
+	Hidden bool   `json:"hidden"`
+}
+
+func (s *sub) UnmarshalJSON(raw []byte) error {
+	var v interface{}
+
+	err := json.Unmarshal(raw, &v)
+	if err != nil {
+		return err
+	}
+
+	switch t := v.(type) {
+	case string:
+		s.Name = t
+
+	case map[string]interface{}:
+		var rs struct {
+			Name   string `json:"name"`
+			Hidden bool   `json:"hidden"`
+		}
+		err := json.Unmarshal(raw, &rs)
+		if err != nil {
+			return err
+		}
+
+		s.Name = rs.Name
+		s.Hidden = rs.Hidden
+
+	default:
+		return errors.New("cannot unmarshal object into Go struct of type sub")
+	}
+
+	return nil
 }
 
 type sourceURLs struct {

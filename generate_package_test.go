@@ -22,7 +22,7 @@ func TestGenerate(t *testing.T) {
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
-				Subs:   []string{"subpkg1", "subpkg2"},
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
 				Type:   "git",
 				URL:    "https://repositoryhost.com/example/go-pkg1",
 			},
@@ -58,7 +58,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
-				Subs:   []string{"subpkg1", "subpkg2"},
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
 				Type:   "git",
 				URL:    "https://repositoryhost.com/example/go-pkg1",
 				SourceURLs: sourceURLs{
@@ -102,7 +102,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 			pkg:         "pkg1/subpkg1",
 			r: repository{
 				Prefix: "pkg1",
-				Subs:   []string{"subpkg1", "subpkg2"},
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
 				Type:   "git",
 				URL:    "https://repositoryhost.com/example/go-pkg1",
 				SourceURLs: sourceURLs{
@@ -146,7 +146,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
-				Subs:   []string{"subpkg1", "subpkg2"},
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
 				URL:    "https://github.com/example/go-pkg1",
 			},
 			expectedOut: `<!DOCTYPE html>
@@ -181,7 +181,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 			pkg:         "pkg1/subpkg1",
 			r: repository{
 				Prefix: "pkg1",
-				Subs:   []string{"subpkg1", "subpkg2"},
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
 				URL:    "https://github.com/example/go-pkg1",
 			},
 			expectedOut: `<!DOCTYPE html>

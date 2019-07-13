@@ -29,7 +29,7 @@ body { margin-top: 0; }
 <li>
 <a href="/{{$r.Prefix}}">{{$r.Prefix}}</a>
 {{if .Subs -}}<ul>{{end -}}
-{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s}}">{{$s}}</a></li>{{end -}}
+{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s.Name}}">{{$s.Name}}</a></li>{{end -}}
 {{if .Subs -}}</ul>{{end -}}
 </li>
 {{end -}}
@@ -42,7 +42,7 @@ body { margin-top: 0; }
 <li>
 <a href="/{{$r.Prefix}}">{{$r.Prefix}}</a>
 {{if .Subs -}}<ul>{{end -}}
-{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s}}">{{$s}}</a></li>{{end -}}
+{{range $_, $s := .Subs -}}<li><a href="/{{$r.Prefix}}/{{$s.Name}}">{{$s.Name}}</a></li>{{end -}}
 {{if .Subs -}}</ul>{{end -}}
 </li>
 {{end -}}
