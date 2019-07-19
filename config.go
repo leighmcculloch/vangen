@@ -51,17 +51,8 @@ func (s *sub) UnmarshalJSON(raw []byte) error {
 		s.Name = t
 
 	case map[string]interface{}:
-		var rs struct {
-			Name   string `json:"name"`
-			Hidden bool   `json:"hidden"`
-		}
-		err := json.Unmarshal(raw, &rs)
-		if err != nil {
-			return err
-		}
-
-		s.Name = rs.Name
-		s.Hidden = rs.Hidden
+		s.Name = t["name"].(string)
+		s.Hidden = t["hidden"].(bool)
 
 	default:
 		return errors.New("cannot unmarshal object into Go struct of type sub")
