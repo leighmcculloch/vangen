@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"errors"
 	"io"
 	"io/ioutil"
 	"path"
@@ -34,30 +33,27 @@ func (r repository) Packages() []string {
 }
 
 type sub struct {
-	Name   string `json:"name"`
-	Hidden bool   `json:"hidden"`
+	Name   string
+	Hidden bool
 }
 
 func (s *sub) UnmarshalJSON(raw []byte) error {
-	var v interface{}
+	*s = sub{}
 
-	err := json.Unmarshal(raw, &v)
+	err := json.Unmarshal(raw, &s.Name)
+	if err == nil {
+		return nil
+	}
+
+	subWithTags := struct {
+		Name   string `json:"name"`
+		Hidden bool   `json:"hidden"`
+	}{}
+	err = json.Unmarshal(raw, &subWithTags)
 	if err != nil {
 		return err
 	}
-
-	switch t := v.(type) {
-	case string:
-		s.Name = t
-
-	case map[string]interface{}:
-		s.Name = t["name"].(string)
-		s.Hidden = t["hidden"].(bool)
-
-	default:
-		return errors.New("cannot unmarshal object into Go struct of type sub")
-	}
-
+	*s = sub(subWithTags)
 	return nil
 }
 
