@@ -30,7 +30,7 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 Home: <a href="{{.HomeURL}}">{{.HomeURL}}</a><br/>
 Source: <a href="{{.Repository.URL}}">{{.Repository.URL}}</a><br/>
 {{if .Repository.Subs -}}Sub-packages:<ul>{{end -}}
-{{range $_, $s := .Repository.Subs -}}<li><a href="/{{$.Repository.Prefix}}/{{$s}}">{{$.Domain}}/{{$.Repository.Prefix}}/{{$s}}</a></li>{{end -}}
+{{range $_, $s := .Repository.Subs -}}{{if not $s.Hidden -}}<li><a href="/{{$.Repository.Prefix}}/{{$s.Name}}">{{$.Domain}}/{{$.Repository.Prefix}}/{{$s.Name}}</a></li>{{end -}}{{end -}}
 {{if .Repository.Subs -}}</ul>{{end -}}
 </div>
 </body>

@@ -68,6 +68,39 @@ func TestParseConfigPackages(t *testing.T) {
 	}
 }
 
+func TestParseConfigHiddenPackages(t *testing.T) {
+	r := strings.NewReader(`{
+  "repositories": [
+    {
+      "prefix": "foo",
+      "subs": [
+        "bar",
+		"car",
+		{ "name": "car/dar", "hidden": true },
+		{ "name": "ear/far", "hidden": false }
+      ]
+    }
+  ]
+}`)
+
+	c, err := parseConfig(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := c.Repositories[0].Subs
+
+	e := []sub{
+		{Name: "bar"},
+		{Name: "car"},
+		{Name: "car/dar", Hidden: true},
+		{Name: "ear/far", Hidden: false},
+	}
+
+	if !reflect.DeepEqual(s, e) {
+		t.Errorf("Got packages %#v, want %#v", s, e)
+	}
+}
+
 func TestParseConfigGitubMinimal(t *testing.T) {
 	r := strings.NewReader(`{
   "domain": "4d63.com",
@@ -87,8 +120,8 @@ func TestParseConfigGitubMinimal(t *testing.T) {
 		Repositories: []repository{
 			{
 				Prefix: "optional",
-				Subs: []string{
-					"template",
+				Subs: []sub{
+					{Name: "template"},
 				},
 				URL: "https://github.com/leighmcculloch/go-optional",
 			},
@@ -133,8 +166,8 @@ func TestParseConfigGithubComplete(t *testing.T) {
 		Repositories: []repository{
 			{
 				Prefix: "optional",
-				Subs: []string{
-					"template",
+				Subs: []sub{
+					{Name: "template"},
 				},
 				Type: "git",
 				URL:  "https://github.com/leighmcculloch/go-optional",

@@ -16,7 +16,7 @@ type config struct {
 
 type repository struct {
 	Prefix     string     `json:"prefix"`
-	Subs       []string   `json:"subs"`
+	Subs       []sub      `json:"subs"`
 	Type       string     `json:"type"`
 	URL        string     `json:"url"`
 	Main       bool       `json:"main"`
@@ -27,9 +27,34 @@ type repository struct {
 func (r repository) Packages() []string {
 	pkgs := []string{r.Prefix}
 	for _, s := range r.Subs {
-		pkgs = append(pkgs, path.Join(r.Prefix, s))
+		pkgs = append(pkgs, path.Join(r.Prefix, s.Name))
 	}
 	return pkgs
+}
+
+type sub struct {
+	Name   string
+	Hidden bool
+}
+
+func (s *sub) UnmarshalJSON(raw []byte) error {
+	*s = sub{}
+
+	err := json.Unmarshal(raw, &s.Name)
+	if err == nil {
+		return nil
+	}
+
+	subWithTags := struct {
+		Name   string `json:"name"`
+		Hidden bool   `json:"hidden"`
+	}{}
+	err = json.Unmarshal(raw, &subWithTags)
+	if err != nil {
+		return err
+	}
+	*s = sub(subWithTags)
+	return nil
 }
 
 type sourceURLs struct {
