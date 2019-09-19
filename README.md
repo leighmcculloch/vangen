@@ -70,6 +70,8 @@ Flags:
 
 ### Minimal
 
+The repository `type` and `source` properties will be set automatically when `url` begins with `https://github.com`.  Below is a minimal config for a project hosted on GitHub.
+
 ```json
 {
   "domain": "4d63.com",
