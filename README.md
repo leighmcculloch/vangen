@@ -70,7 +70,7 @@ Flags:
 
 ### Minimal
 
-The repository `type` and `source` properties will be set automatically when `url` begins with `https://github.com`.  Below is a minimal config for a project hosted on GitHub.
+The repository `type` and `source` properties will be set automatically when `url` begins with `https://github.com` or `https://gitlab.com`.  This minimizes the config required for projects hosted on either site.  Below is a minimal config for a project hosted on GitHub.
 
 ```json
 {
