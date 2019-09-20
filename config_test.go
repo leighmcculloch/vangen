@@ -192,3 +192,95 @@ func TestParseConfigGithubComplete(t *testing.T) {
 		t.Errorf("Got config %#v, want %#v", c, e)
 	}
 }
+
+func TestParseConfigGitlabMinimal(t *testing.T) {
+	r := strings.NewReader(`{
+  "domain": "4d63.com",
+  "repositories": [
+    {
+      "prefix": "optional",
+      "subs": [
+        "template"
+      ],
+      "url": "https://gitlab.com/leighmcculloch/go-optional"
+    }
+  ]
+}`)
+
+	e := config{
+		Domain: "4d63.com",
+		Repositories: []repository{
+			{
+				Prefix: "optional",
+				Subs: []sub{
+					{Name: "template"},
+				},
+				URL: "https://gitlab.com/leighmcculloch/go-optional",
+			},
+		},
+	}
+
+	c, err := parseConfig(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if !reflect.DeepEqual(c, e) {
+		t.Errorf("Got config %#v, want %#v", c, e)
+	}
+}
+
+func TestParseConfigGitlabComplete(t *testing.T) {
+	r := strings.NewReader(`{
+  "domain": "4d63.com",
+  "repositories": [
+    {
+      "prefix": "optional",
+      "subs": [
+        "template"
+      ],
+      "type": "git",
+      "url": "https://gitlab.com/leighmcculloch/go-optional",
+      "source": {
+        "home": "https://gitlab.com/leighmcculloch/go-optional",
+        "dir": "https://gitlab.com/leighmcculloch/go-optional/tree/master{/dir}",
+        "file": "https://gitlab.com/leighmcculloch/go-optional/blob/master{/dir}/{file}#L{line}"
+      },
+      "website": {
+        "url": "https://gitlab.com/leighmcculloch/go-optional"
+      }
+    }
+  ]
+}`)
+
+	e := config{
+		Domain: "4d63.com",
+		Repositories: []repository{
+			{
+				Prefix: "optional",
+				Subs: []sub{
+					{Name: "template"},
+				},
+				Type: "git",
+				URL:  "https://gitlab.com/leighmcculloch/go-optional",
+				SourceURLs: sourceURLs{
+					Home: "https://gitlab.com/leighmcculloch/go-optional",
+					Dir:  "https://gitlab.com/leighmcculloch/go-optional/tree/master{/dir}",
+					File: "https://gitlab.com/leighmcculloch/go-optional/blob/master{/dir}/{file}#L{line}",
+				},
+				Website: website{
+					URL: "https://gitlab.com/leighmcculloch/go-optional",
+				},
+			},
+		},
+	}
+
+	c, err := parseConfig(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if !reflect.DeepEqual(c, e) {
+		t.Errorf("Got config %#v, want %#v", c, e)
+	}
+}
