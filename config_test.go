@@ -101,7 +101,7 @@ func TestParseConfigHiddenPackages(t *testing.T) {
 	}
 }
 
-func TestParseConfigGitubMinimal(t *testing.T) {
+func TestParseConfigGithubMinimal(t *testing.T) {
 	r := strings.NewReader(`{
   "domain": "4d63.com",
   "repositories": [
