@@ -48,7 +48,7 @@ Source: <a href="{{.Repository.URL}}">{{.Repository.URL}}</a><br/>
 		homeURL = fmt.Sprintf("https://godoc.org/%s/%s", domain, pkg)
 	}
 
-	if strings.HasPrefix(r.URL, "https://github.com") {
+	if strings.HasPrefix(r.URL, "https://github.com") || strings.HasPrefix(r.URL, "https://gitlab.com") {
 		r.Type = "git"
 		r.SourceURLs = sourceURLs{
 			Home: r.URL,

@@ -254,6 +254,76 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 </html>`,
 			expectedErr: nil,
 		},
+		{
+			description: "gitlab defaults",
+			domain:      "example.com",
+			pkg:         "pkg1",
+			r: repository{
+				Prefix: "pkg1",
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
+				URL:    "https://gitlab.com/example/go-pkg1",
+			},
+			expectedOut: `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="go-import" content="example.com/pkg1 git https://gitlab.com/example/go-pkg1">
+<meta name="go-source" content="example.com/pkg1 https://gitlab.com/example/go-pkg1 https://gitlab.com/example/go-pkg1/tree/master{/dir} https://gitlab.com/example/go-pkg1/blob/master{/dir}/{file}#L{line}">
+<style>
+* { font-family: sans-serif; }
+body { margin-top: 0; }
+.content { display: inline-block; }
+code { display: block; font-family: monospace; font-size: 1em; background-color: #d5d5d5; padding: 1em; margin-bottom: 16px; }
+ul { margin-top: 16px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="content">
+<h2>example.com/pkg1</h2>
+<code>go get example.com/pkg1</code>
+<code>import "example.com/pkg1"</code>
+Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a><br/>
+Source: <a href="https://gitlab.com/example/go-pkg1">https://gitlab.com/example/go-pkg1</a><br/>
+Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
+</body>
+</html>`,
+			expectedErr: nil,
+		},
+		{
+			description: "sub-package gitlab defaults",
+			domain:      "example.com",
+			pkg:         "pkg1/subpkg1",
+			r: repository{
+				Prefix: "pkg1",
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
+				URL:    "https://gitlab.com/example/go-pkg1",
+			},
+			expectedOut: `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="go-import" content="example.com/pkg1 git https://gitlab.com/example/go-pkg1">
+<meta name="go-source" content="example.com/pkg1 https://gitlab.com/example/go-pkg1 https://gitlab.com/example/go-pkg1/tree/master{/dir} https://gitlab.com/example/go-pkg1/blob/master{/dir}/{file}#L{line}">
+<style>
+* { font-family: sans-serif; }
+body { margin-top: 0; }
+.content { display: inline-block; }
+code { display: block; font-family: monospace; font-size: 1em; background-color: #d5d5d5; padding: 1em; margin-bottom: 16px; }
+ul { margin-top: 16px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="content">
+<h2>example.com/pkg1/subpkg1</h2>
+<code>go get example.com/pkg1/subpkg1</code>
+<code>import "example.com/pkg1/subpkg1"</code>
+Home: <a href="https://godoc.org/example.com/pkg1/subpkg1">https://godoc.org/example.com/pkg1/subpkg1</a><br/>
+Source: <a href="https://gitlab.com/example/go-pkg1">https://gitlab.com/example/go-pkg1</a><br/>
+Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
+</body>
+</html>`,
+			expectedErr: nil,
+		},
 	}
 
 	for _, tc := range testCases {
