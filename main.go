@@ -15,6 +15,7 @@ func main() {
 	verbose := flag.Bool("verbose", false, "print verbose output when run")
 	filename := flag.String("config", "vangen.json", "vangen json configuration `filename`")
 	outputDir := flag.String("out", "vangen/", "output `directory` that static files will be written to")
+	noOverwrite := flag.Bool("no-overwrite", false, "If an output file already exists, stops with a non-zero return code")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Vangen is a tool for generating static HTML for hosting Go repositories at a vanity import path.\n\n")
 		fmt.Fprintf(os.Stderr, "Usage:\n\n")
@@ -92,6 +93,17 @@ func main() {
 			}
 
 			pathOut := filepath.Join(dirOut, "index.html")
+			if *noOverwrite {
+				if _, err := os.Stat(pathOut); !os.IsNotExist(err) {
+					if err == nil {
+						fmt.Fprintf(os.Stderr, "cannot overwrite output file %s\n", pathOut)
+						os.Exit(1)
+					} else {
+						fmt.Fprintf(os.Stderr, "checking file %s: %v", pathOut, err)
+					}
+					return
+				}
+			}
 			f, err := os.Create(pathOut)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "writing file %s: %v", pathOut, err)
