@@ -30,6 +30,7 @@ func TestGenerate(t *testing.T) {
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://repositoryhost.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 _ _ _">
 <style>
@@ -74,6 +75,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://repositoryhost.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 https://repositoryhost.com/example/go-pkg1/home https://repositoryhost.com/example/go-pkg1/browser{/dir} https://repositoryhost.com/example/go-pkg1/view{/dir}{/file}">
 <style>
@@ -118,6 +120,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1/subpkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://repositoryhost.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 https://repositoryhost.com/example/go-pkg1/home https://repositoryhost.com/example/go-pkg1/browser{/dir} https://repositoryhost.com/example/go-pkg1/view{/dir}{/file}">
 <style>
@@ -162,6 +165,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1/subpkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://repositoryhost.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 https://repositoryhost.com/example/go-pkg1/home https://repositoryhost.com/example/go-pkg1/browser{/dir} https://repositoryhost.com/example/go-pkg1/view{/dir}{/file}">
 <style>
@@ -197,6 +201,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://github.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 https://github.com/example/go-pkg1 https://github.com/example/go-pkg1/tree/master{/dir} https://github.com/example/go-pkg1/blob/master{/dir}/{file}#L{line}">
 <style>
@@ -232,6 +237,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1/subpkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://github.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 https://github.com/example/go-pkg1 https://github.com/example/go-pkg1/tree/master{/dir} https://github.com/example/go-pkg1/blob/master{/dir}/{file}#L{line}">
 <style>
@@ -267,6 +273,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://gitlab.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 https://gitlab.com/example/go-pkg1 https://gitlab.com/example/go-pkg1/tree/master{/dir} https://gitlab.com/example/go-pkg1/blob/master{/dir}/{file}#L{line}">
 <style>
@@ -302,6 +309,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <html>
 <head>
 <meta charset="utf-8">
+<title>example.com/pkg1/subpkg1</title>
 <meta name="go-import" content="example.com/pkg1 git https://gitlab.com/example/go-pkg1">
 <meta name="go-source" content="example.com/pkg1 https://gitlab.com/example/go-pkg1 https://gitlab.com/example/go-pkg1/tree/master{/dir} https://gitlab.com/example/go-pkg1/blob/master{/dir}/{file}#L{line}">
 <style>
