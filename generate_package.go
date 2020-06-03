@@ -12,6 +12,7 @@ func generate_package(w io.Writer, domain, pkg string, r repository) error {
 <html>
 <head>
 <meta charset="utf-8">
+<title>{{.Domain}}/{{.Package}}</title>
 <meta name="go-import" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.Type}} {{.Repository.URL}}">
 <meta name="go-source" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.SourceURLs.Home}} {{.Repository.SourceURLs.Dir}} {{.Repository.SourceURLs.File}}">
 <style>
