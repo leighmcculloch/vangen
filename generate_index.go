@@ -11,6 +11,7 @@ func generate_index(w io.Writer, domain string, r []repository) error {
 <html>
 <head>
 <meta charset="utf-8">
+<title>{{.Domain}} Go Modules</title>
 <style>
 * { font-family: sans-serif; }
 body { margin-top: 0; }
@@ -20,7 +21,7 @@ body { margin-top: 0; }
 <body>
 <div class="content">
 
-<h2>{{$.Domain}} Go Modules</h2>
+<h2>{{.Domain}} Go Modules</h2>
 
 <h3>Tools:</h3>
 
