@@ -2,11 +2,16 @@ builds:
   - binary: vangen
     goos:
       - linux
+      - macos
+      - windows
     goarch:
       - amd64
 
-archive:
-  wrap_in_directory: true
-  format: tar.gz
-  files:
-    - LICENSE
+archives:
+  - wrap_in_directory: true
+    format: tar.gz
+    files:
+      - LICENSE
+    format_overrides:
+    - goos: windows
+      format: zip

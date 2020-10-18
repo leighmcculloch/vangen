@@ -1,7 +1,0 @@
-version: '{build}'
-environment:
-  GOVERSION: 1.11
-  GO111MODULE: on
-build: off
-test_script:
-  - cmd: go test -cover ./...
