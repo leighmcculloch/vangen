@@ -1,6 +1,6 @@
 # vangen
-[![Linux/OSX Build Status](https://img.shields.io/travis/leighmcculloch/vangen.svg?label=linux%20%26%20osx)](https://travis-ci.org/leighmcculloch/vangen)
-[![Windows Build Status](https://img.shields.io/appveyor/ci/leighmcculloch/vangen.svg?label=windows)](https://ci.appveyor.com/project/leighmcculloch/vangen)
+![.github/workflows/test.yml](https://github.com/leighmcculloch/vangen/workflows/.github/workflows/test.yml/badge.svg)
+![.github/workflows/release.yml](https://github.com/leighmcculloch/vangen/workflows/.github/workflows/release.yml/badge.svg)
 [![Codecov](https://img.shields.io/codecov/c/github/leighmcculloch/vangen.svg)](https://codecov.io/gh/leighmcculloch/vangen)
 [![Go Report Card](https://goreportcard.com/badge/github.com/leighmcculloch/vangen)](https://goreportcard.com/report/github.com/leighmcculloch/vangen)
 [![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/leighmcculloch/vangen)
@@ -24,18 +24,18 @@ go get 4d63.com/vangen
 ### Mac
 
 ```
-curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/vangen/binaries/mac/amd64/vangen && chmod +x /usr/local/bin/vangen
+curl -sSL https://github.com/leighmcculloch/vangen/releases/download/v1.1.3/vangen_1.1.3_linux_amd64.tar.gz | tar xz -C /usr/local/bin vangen
 ```
 
 ### Linux
 
 ```
-curl -o /usr/local/bin/vangen https://raw.githubusercontent.com/leighmcculloch/vangen/binaries/linux/amd64/vangen && chmod +x /usr/local/bin/vangen
+curl -sSL https://github.com/leighmcculloch/vangen/releases/download/v1.1.3/vangen_1.1.3_darwin_amd64.tar.gz | tar xz -C /usr/local/bin vangen
 ```
 
 ### Windows
 
-[Download the executable](https://raw.githubusercontent.com/leighmcculloch/vangen/binaries/windows/amd64/vangen.exe), and save it to your path.
+[Download the executable](https://github.com/leighmcculloch/vangen/releases/download/v1.1.3/vangen_1.1.3_windows_amd64.zip), and save it to your path.
 
 ## Usage
 
