@@ -2,7 +2,7 @@ builds:
   - binary: vangen
     goos:
       - linux
-      - macos
+      - darwin
       - windows
     goarch:
       - amd64
