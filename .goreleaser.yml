@@ -8,8 +8,7 @@ builds:
       - amd64
 
 archives:
-  - wrap_in_directory: true
-    format: tar.gz
+  - format: tar.gz
     files:
       - LICENSE
     format_overrides:
