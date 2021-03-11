@@ -21,13 +21,13 @@ Go vanity import paths work by serving a HTML file that tells the `go get` tool 
 go get 4d63.com/vangen
 ```
 
-### Mac
+### Linux
 
 ```
 curl -sSL https://github.com/leighmcculloch/vangen/releases/download/v1.1.3/vangen_1.1.3_linux_amd64.tar.gz | tar xz -C /usr/local/bin vangen
 ```
 
-### Linux
+### Mac
 
 ```
 curl -sSL https://github.com/leighmcculloch/vangen/releases/download/v1.1.3/vangen_1.1.3_darwin_amd64.tar.gz | tar xz -C /usr/local/bin vangen
