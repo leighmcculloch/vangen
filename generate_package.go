@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func generate_package(w io.Writer, domain, docs, pkg string, r repository) error {
+func generate_package(w io.Writer, domain, docsDomain, pkg string, r repository) error {
 	const html = `<!DOCTYPE html>
 <html>
 <head>
@@ -46,10 +46,10 @@ Source: <a href="{{.Repository.URL}}">{{.Repository.URL}}</a><br/>
 	if r.Website.URL != "" {
 		homeURL = r.Website.URL
 	} else {
-		if docs == "" {
-			docs = "pkg.go.dev"
+		if docsDomain == "" {
+			docsDomain = "pkg.go.dev"
 		}
-		homeURL = fmt.Sprintf("https://%s/%s/%s", docs, domain, pkg)
+		homeURL = fmt.Sprintf("https://%s/%s/%s", docsDomain, domain, pkg)
 	}
 
 	if strings.HasPrefix(r.URL, "https://github.com") || strings.HasPrefix(r.URL, "https://gitlab.com") {

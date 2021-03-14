@@ -11,7 +11,7 @@ func TestGenerate(t *testing.T) {
 	testCases := []struct {
 		description string
 		domain      string
-		docs        string
+		docsDomain  string
 		pkg         string
 		r           repository
 		expectedOut string
@@ -20,7 +20,7 @@ func TestGenerate(t *testing.T) {
 		{
 			description: "simple",
 			domain:      "example.com",
-			docs:        "godoc.org",
+			docsDomain:  "godoc.org",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -58,7 +58,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "custom source urls",
 			domain:      "example.com",
-			docs:        "pkg.go.dev",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -194,7 +194,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "github defaults",
 			domain:      "example.com",
-			docs:        "pkg.go.dev",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -231,7 +231,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "sub-package github defaults",
 			domain:      "example.com",
-			docs:        "pkg.go.dev",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1/subpkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -268,7 +268,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "gitlab defaults",
 			domain:      "example.com",
-			docs:        "",
+			docsDomain:  "",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -305,7 +305,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "sub-package gitlab defaults",
 			domain:      "example.com",
-			docs:        "pkg.go.dev",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1/subpkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -343,7 +343,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 
 	for _, tc := range testCases {
 		var out bytes.Buffer
-		err := generate_package(&out, tc.domain, tc.docs, tc.pkg, tc.r)
+		err := generate_package(&out, tc.domain, tc.docsDomain, tc.pkg, tc.r)
 		if err != tc.expectedErr {
 			t.Errorf("Test case %q got err %#v, want %#v", tc.description, err, tc.expectedErr)
 		} else if out.String() != tc.expectedOut {

@@ -92,7 +92,7 @@ The repository `type` and `source` properties will be set automatically when `ur
 ```json
 {
   "domain": "4d63.com",
-  "docs": "pkg.go.dev",
+  "docsDomain": "pkg.go.dev",
   "repositories": [
     {
       "prefix": "optional",
