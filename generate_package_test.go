@@ -11,6 +11,7 @@ func TestGenerate(t *testing.T) {
 	testCases := []struct {
 		description string
 		domain      string
+		docsDomain  string
 		pkg         string
 		r           repository
 		expectedOut string
@@ -19,6 +20,7 @@ func TestGenerate(t *testing.T) {
 		{
 			description: "simple",
 			domain:      "example.com",
+			docsDomain:  "godoc.org",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -56,6 +58,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "custom source urls",
 			domain:      "example.com",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -191,6 +194,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "github defaults",
 			domain:      "example.com",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -217,7 +221,7 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 <h2>example.com/pkg1</h2>
 <code>go get example.com/pkg1</code>
 <code>import "example.com/pkg1"</code>
-Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a><br/>
+Home: <a href="https://pkg.go.dev/example.com/pkg1">https://pkg.go.dev/example.com/pkg1</a><br/>
 Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
@@ -227,6 +231,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "sub-package github defaults",
 			domain:      "example.com",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1/subpkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -253,7 +258,7 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 <h2>example.com/pkg1/subpkg1</h2>
 <code>go get example.com/pkg1/subpkg1</code>
 <code>import "example.com/pkg1/subpkg1"</code>
-Home: <a href="https://godoc.org/example.com/pkg1/subpkg1">https://godoc.org/example.com/pkg1/subpkg1</a><br/>
+Home: <a href="https://pkg.go.dev/example.com/pkg1/subpkg1">https://pkg.go.dev/example.com/pkg1/subpkg1</a><br/>
 Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
@@ -263,6 +268,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "gitlab defaults",
 			domain:      "example.com",
+			docsDomain:  "",
 			pkg:         "pkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -289,7 +295,7 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 <h2>example.com/pkg1</h2>
 <code>go get example.com/pkg1</code>
 <code>import "example.com/pkg1"</code>
-Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a><br/>
+Home: <a href="https://pkg.go.dev/example.com/pkg1">https://pkg.go.dev/example.com/pkg1</a><br/>
 Source: <a href="https://gitlab.com/example/go-pkg1">https://gitlab.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
@@ -299,6 +305,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 		{
 			description: "sub-package gitlab defaults",
 			domain:      "example.com",
+			docsDomain:  "pkg.go.dev",
 			pkg:         "pkg1/subpkg1",
 			r: repository{
 				Prefix: "pkg1",
@@ -325,7 +332,7 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 <h2>example.com/pkg1/subpkg1</h2>
 <code>go get example.com/pkg1/subpkg1</code>
 <code>import "example.com/pkg1/subpkg1"</code>
-Home: <a href="https://godoc.org/example.com/pkg1/subpkg1">https://godoc.org/example.com/pkg1/subpkg1</a><br/>
+Home: <a href="https://pkg.go.dev/example.com/pkg1/subpkg1">https://pkg.go.dev/example.com/pkg1/subpkg1</a><br/>
 Source: <a href="https://gitlab.com/example/go-pkg1">https://gitlab.com/example/go-pkg1</a><br/>
 Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
 </body>
@@ -336,7 +343,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 
 	for _, tc := range testCases {
 		var out bytes.Buffer
-		err := generate_package(&out, tc.domain, tc.pkg, tc.r)
+		err := generate_package(&out, tc.domain, tc.docsDomain, tc.pkg, tc.r)
 		if err != tc.expectedErr {
 			t.Errorf("Test case %q got err %#v, want %#v", tc.description, err, tc.expectedErr)
 		} else if out.String() != tc.expectedOut {

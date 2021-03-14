@@ -1,5 +1,6 @@
 {
   "domain": "example.com",
+  "docsDomain": "pkg.go.dev",
   "index": true,
   "repositories": [
     {

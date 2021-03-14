@@ -10,6 +10,7 @@ import (
 
 type config struct {
 	Domain       string       `json:"domain"`
+	DocsDomain   string       `json:"docsDomain"`
 	Index        bool         `json:"index"`
 	Repositories []repository `json:"repositories"`
 }
