@@ -53,11 +53,17 @@ Source: <a href="{{.Repository.URL}}">{{.Repository.URL}}</a><br/>
 	}
 
 	if strings.HasPrefix(r.URL, "https://github.com") || strings.HasPrefix(r.URL, "https://gitlab.com") {
-		r.Type = "git"
-		r.SourceURLs = sourceURLs{
-			Home: r.URL,
-			Dir:  r.URL + "/tree/master{/dir}",
-			File: r.URL + "/blob/master{/dir}/{file}#L{line}",
+		if r.Type == "" {
+			r.Type = "git"
+		}
+		if r.SourceURLs.Home == "" {
+			r.SourceURLs.Home = r.URL
+		}
+		if r.SourceURLs.Dir == "" {
+			r.SourceURLs.Dir = r.URL + "/tree/master{/dir}"
+		}
+		if r.SourceURLs.File == "" {
+			r.SourceURLs.File = r.URL + "/blob/master{/dir}/{file}#L{line}"
 		}
 	}
 
