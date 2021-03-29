@@ -339,6 +339,52 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 </html>`,
 			expectedErr: nil,
 		},
+		{
+			description: "github defaults with custom source",
+			domain:      "example.com",
+			docsDomain:  "",
+			pkg:         "pkg1",
+			r: repository{
+				Prefix: "pkg1",
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
+				Type:   "git",
+				URL:    "https://github.com/example/go-pkg1",
+				SourceURLs: sourceURLs{
+					Home: "https://github.com/example/go-pkg1",
+					Dir:  "https://github.com/example/go-pkg1/tree/branch{/dir}",
+					File: "https://github.com/example/go-pkg1/blob/branch{/dir}/{file}#L{line}",
+				},
+				Website: website{
+					URL: "https://www.example.com",
+				},
+			},
+			expectedOut: `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>example.com/pkg1</title>
+<meta name="go-import" content="example.com/pkg1 git https://github.com/example/go-pkg1">
+<meta name="go-source" content="example.com/pkg1 https://github.com/example/go-pkg1 https://github.com/example/go-pkg1/tree/branch{/dir} https://github.com/example/go-pkg1/blob/branch{/dir}/{file}#L{line}">
+<style>
+* { font-family: sans-serif; }
+body { margin-top: 0; }
+.content { display: inline-block; }
+code { display: block; font-family: monospace; font-size: 1em; background-color: #d5d5d5; padding: 1em; margin-bottom: 16px; }
+ul { margin-top: 16px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="content">
+<h2>example.com/pkg1</h2>
+<code>go get example.com/pkg1</code>
+<code>import "example.com/pkg1"</code>
+Home: <a href="https://www.example.com">https://www.example.com</a><br/>
+Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a><br/>
+Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
+</body>
+</html>`,
+			expectedErr: nil,
+		},
 	}
 
 	for _, tc := range testCases {
