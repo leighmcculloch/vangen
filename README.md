@@ -1,7 +1,6 @@
 # vangen
 ![.github/workflows/test.yml](https://github.com/leighmcculloch/vangen/workflows/.github/workflows/test.yml/badge.svg)
 ![.github/workflows/release.yml](https://github.com/leighmcculloch/vangen/workflows/.github/workflows/release.yml/badge.svg)
-[![Codecov](https://img.shields.io/codecov/c/github/leighmcculloch/vangen.svg)](https://codecov.io/gh/leighmcculloch/vangen)
 [![Go Report Card](https://goreportcard.com/badge/github.com/leighmcculloch/vangen)](https://goreportcard.com/report/github.com/leighmcculloch/vangen)
 [![Go docs](https://img.shields.io/badge/godoc-reference-blue.svg)](https://pkg.go.dev/github.com/leighmcculloch/vangen)
 
