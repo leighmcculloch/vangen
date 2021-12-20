@@ -21,6 +21,7 @@ type repository struct {
 	Type       string     `json:"type"`
 	URL        string     `json:"url"`
 	Main       bool       `json:"main"`
+	Hidden     bool       `json:"hidden"`
 	SourceURLs sourceURLs `json:"source"`
 	Website    website    `json:"website"`
 }
