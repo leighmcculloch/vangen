@@ -28,6 +28,10 @@ func TestGenerateIndex(t *testing.T) {
 					Prefix: "pkg2",
 					Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2/subsubpkg1"}},
 				},
+				{
+					Prefix: "pkg3",
+					Hidden: true,
+				},
 			},
 			expectedOut: `<!DOCTYPE html>
 <html>

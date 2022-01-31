@@ -56,6 +56,45 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 			expectedErr: nil,
 		},
 		{
+			description: "hidden",
+			domain:      "example.com",
+			docsDomain:  "godoc.org",
+			pkg:         "pkg1",
+			r: repository{
+				Prefix: "pkg1",
+				Hidden: true,
+				Subs:   []sub{{Name: "subpkg1"}, {Name: "subpkg2"}},
+				Type:   "git",
+				URL:    "https://repositoryhost.com/example/go-pkg1",
+			},
+			expectedOut: `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>example.com/pkg1</title>
+<meta name="go-import" content="example.com/pkg1 git https://repositoryhost.com/example/go-pkg1">
+<meta name="go-source" content="example.com/pkg1 _ _ _">
+<style>
+* { font-family: sans-serif; }
+body { margin-top: 0; }
+.content { display: inline-block; }
+code { display: block; font-family: monospace; font-size: 1em; background-color: #d5d5d5; padding: 1em; margin-bottom: 16px; }
+ul { margin-top: 16px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="content">
+<h2>example.com/pkg1</h2>
+<code>go get example.com/pkg1</code>
+<code>import "example.com/pkg1"</code>
+Home: <a href="https://godoc.org/example.com/pkg1">https://godoc.org/example.com/pkg1</a><br/>
+Source: <a href="https://repositoryhost.com/example/go-pkg1">https://repositoryhost.com/example/go-pkg1</a><br/>
+Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><li><a href="/pkg1/subpkg2">example.com/pkg1/subpkg2</a></li></ul></div>
+</body>
+</html>`,
+			expectedErr: nil,
+		},
+		{
 			description: "custom source urls",
 			domain:      "example.com",
 			docsDomain:  "pkg.go.dev",

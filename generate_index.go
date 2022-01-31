@@ -39,14 +39,14 @@ body { margin-top: 0; }
 <h3>Libraries:</h3>
 
 <ul>
-{{range $_, $r := .PackageRepositories -}}
+{{range $_, $r := .PackageRepositories -}}{{if not $r.Hidden -}}
 <li>
 <a href="/{{$r.Prefix}}">{{$r.Prefix}}</a>
 {{if .Subs -}}<ul>{{end -}}
 {{range $_, $s := .Subs -}}{{if not $s.Hidden -}}<li><a href="/{{$r.Prefix}}/{{$s.Name}}">{{$s.Name}}</a></li>{{end -}}{{end -}}
 {{if .Subs -}}</ul>{{end -}}
 </li>
-{{end -}}
+{{end }}{{end -}}
 </ul>
 
 <hr/>

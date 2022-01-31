@@ -99,6 +99,7 @@ The repository `type` and `source` properties will be set automatically when `ur
         "template"
       ],
       "type": "git",
+      "hidden": false,
       "url": "https://github.com/leighmcculloch/go-optional",
       "source": {
         "home": "https://github.com/leighmcculloch/go-optional",
@@ -112,4 +113,3 @@ The repository `type` and `source` properties will be set automatically when `ur
   ]
 }
 ```
-
