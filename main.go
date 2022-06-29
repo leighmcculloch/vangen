@@ -9,7 +9,7 @@ import (
 
 var version = "<not set>"
 
-func main() {
+func run() error {
 	printHelp := flag.Bool("help", false, "print this help list")
 	printVersion := flag.Bool("version", false, "print program version")
 	verbose := flag.Bool("verbose", false, "print verbose output when run")
@@ -27,38 +27,34 @@ func main() {
 
 	if *printHelp {
 		flag.Usage()
-		return
+		return nil
 	}
 
 	if *printVersion {
 		fmt.Fprintln(os.Stderr, version)
-		return
+		return nil
 	}
 
 	cf, err := os.Open(*filename)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		return
+		return err
 	}
 
 	c, err := parseConfig(cf)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		return
+		return err
 	}
 
 	err = os.MkdirAll(*outputDir, os.ModePerm)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "making dir %s: %v", *outputDir, err)
-		return
+		return fmt.Errorf("making dir %s: %w", *outputDir, err)
 	}
 
 	if c.Index {
 		pathOut := filepath.Join(*outputDir, "index.html")
 		f, err := os.Create(pathOut)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "writing file %s: %v", pathOut, err)
-			return
+			return fmt.Errorf("writing file %s: %w", pathOut, err)
 		}
 		defer func() {
 			err := f.Close()
@@ -72,14 +68,12 @@ func main() {
 		}
 		err = generate_index(f, c.Domain, c.Repositories)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "generating index: %v", err)
-			return
+			return fmt.Errorf("generating index: %w", err)
 		}
 
 		err = f.Sync()
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "flushing file %s: %v", pathOut, err)
-			return
+			return fmt.Errorf("flushing file %s: %w", pathOut, err)
 		}
 	}
 
@@ -88,26 +82,22 @@ func main() {
 			dirOut := filepath.Join(*outputDir, p)
 			err = os.MkdirAll(dirOut, os.ModePerm)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "making dir %s: %v", dirOut, err)
-				return
+				return fmt.Errorf("making dir %s: %v", dirOut, err)
 			}
 
 			pathOut := filepath.Join(dirOut, "index.html")
 			if *noOverwrite {
 				if _, err := os.Stat(pathOut); !os.IsNotExist(err) {
 					if err == nil {
-						fmt.Fprintf(os.Stderr, "cannot overwrite output file %s\n", pathOut)
-						os.Exit(1)
-					} else {
-						fmt.Fprintf(os.Stderr, "checking file %s: %v", pathOut, err)
+						return fmt.Errorf("cannot overwrite output file %s: %w", pathOut, err)
 					}
-					return
+
+					return fmt.Errorf("checking file %s: %w", pathOut, err)
 				}
 			}
 			f, err := os.Create(pathOut)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "writing file %s: %v", pathOut, err)
-				return
+				return fmt.Errorf("writing file %s: %v", pathOut, err)
 			}
 			defer func() {
 				err := f.Close()
@@ -121,15 +111,23 @@ func main() {
 			}
 			err = generate_package(f, c.Domain, c.DocsDomain, p, r)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "generating package %s: %v", p, err)
-				return
+				return fmt.Errorf("generating package %s: %w", p, err)
 			}
 
 			err = f.Sync()
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "flushing file %s: %v", pathOut, err)
-				return
+				return fmt.Errorf("flushing file %s: %w", pathOut, err)
 			}
 		}
+	}
+
+	return nil
+}
+
+func main() {
+	err := run()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+		os.Exit(1)
 	}
 }
