@@ -9,6 +9,14 @@ import (
 
 var version = "<not set>"
 
+func main() {
+	err := run()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+		os.Exit(1)
+	}
+}
+
 func run() error {
 	printHelp := flag.Bool("help", false, "print this help list")
 	printVersion := flag.Bool("version", false, "print program version")
@@ -122,12 +130,4 @@ func run() error {
 	}
 
 	return nil
-}
-
-func main() {
-	err := run()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		os.Exit(1)
-	}
 }
