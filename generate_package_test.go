@@ -425,7 +425,7 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 			expectedErr: nil,
 		},
 		{
-			description: "no top level pkg, no prefix",
+			description: "single module deployment that has no 'prefix'",
 			domain:      "example.com",
 			docsDomain:  "",
 			pkg:         "",
@@ -465,7 +465,7 @@ ul { margin-top: 16px; margin-bottom: 16px; }
 <code>import "example.com/"</code>
 Home: <a href="https://www.example.com">https://www.example.com</a><br/>
 Source: <a href="https://github.com/example/go-pkg1">https://github.com/example/go-pkg1</a><br/>
-Sub-packages:<ul><li><a href="//subpkg1">example.com//subpkg1</a></li><li><a href="//subpkg2">example.com//subpkg2</a></li></ul></div>
+Sub-packages:<ul><li><a href="/subpkg1">example.com/subpkg1</a></li><li><a href="/subpkg2">example.com/subpkg2</a></li></ul></div>
 </body>
 </html>`,
 			expectedErr: nil,
