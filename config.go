@@ -28,10 +28,14 @@ type repository struct {
 
 func (r repository) Packages() []string {
 	pkgs := []string{r.Prefix}
-	for _, s := range r.Subs {
-		pkgs = append(pkgs, path.Join(r.Prefix, s.Name))
+	for i := range r.Subs {
+		pkgs = append(pkgs, r.SubPath(i))
 	}
 	return pkgs
+}
+
+func (r repository) SubPath(i int) string {
+	return path.Join(r.Prefix, r.Subs[i].Name)
 }
 
 type sub struct {
