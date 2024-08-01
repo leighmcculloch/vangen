@@ -26,6 +26,14 @@ type repository struct {
 	Website    website    `json:"website"`
 }
 
+func (r repository) PrefixPath() string {
+	if r.Prefix == "" {
+		return ""
+	} else {
+		return "/" + r.Prefix
+	}
+}
+
 func (r repository) Packages() []string {
 	pkgs := []string{r.Prefix}
 	for i := range r.Subs {
@@ -75,7 +83,6 @@ type website struct {
 
 func parseConfig(r io.Reader) (config, error) {
 	bytes, err := ioutil.ReadAll(r)
-
 	if err != nil {
 		return config{}, err
 	}
