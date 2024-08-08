@@ -13,8 +13,8 @@ func generate_package(w io.Writer, domain, docsDomain, pkg string, r repository)
 <head>
 <meta charset="utf-8">
 <title>{{.Domain}}/{{.Package}}</title>
-<meta name="go-import" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.Type}} {{.Repository.URL}}">
-<meta name="go-source" content="{{.Domain}}/{{.Repository.Prefix}} {{.Repository.SourceURLs.Home}} {{.Repository.SourceURLs.Dir}} {{.Repository.SourceURLs.File}}">
+<meta name="go-import" content="{{.Domain}}{{.Repository.PrefixPath}} {{.Repository.Type}} {{.Repository.URL}}">
+<meta name="go-source" content="{{.Domain}}{{.Repository.PrefixPath}} {{.Repository.SourceURLs.Home}} {{.Repository.SourceURLs.Dir}} {{.Repository.SourceURLs.File}}">
 <style>
 * { font-family: sans-serif; }
 body { margin-top: 0; }

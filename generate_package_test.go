@@ -448,8 +448,8 @@ Sub-packages:<ul><li><a href="/pkg1/subpkg1">example.com/pkg1/subpkg1</a></li><l
 <head>
 <meta charset="utf-8">
 <title>example.com/</title>
-<meta name="go-import" content="example.com/ git https://github.com/example/go-pkg1">
-<meta name="go-source" content="example.com/ https://github.com/example/go-pkg1 https://github.com/example/go-pkg1/tree/branch{/dir} https://github.com/example/go-pkg1/blob/branch{/dir}/{file}#L{line}">
+<meta name="go-import" content="example.com git https://github.com/example/go-pkg1">
+<meta name="go-source" content="example.com https://github.com/example/go-pkg1 https://github.com/example/go-pkg1/tree/branch{/dir} https://github.com/example/go-pkg1/blob/branch{/dir}/{file}#L{line}">
 <style>
 * { font-family: sans-serif; }
 body { margin-top: 0; }
